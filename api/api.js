@@ -4,12 +4,13 @@ const api = axios.create({
    baseURL: 'https://seyaji-nc-news.herokuapp.com/api'
 })
 
-export const getArticles = async () => {
+export const getArticles = async (params) => {
    return api({
       method: 'get',
-      url: '/articles'
+      url: '/articles',
+      params: params
    })
-   .then((response) => response.data)
+   .then((response) => response.data.articles)
    .catch((error) => console.log(error))
 }
 

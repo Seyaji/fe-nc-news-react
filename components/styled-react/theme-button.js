@@ -1,5 +1,5 @@
 import React from 'react';
-import * as theme from './theme'
+import * as theme from '../styled/theme'
 import styled, { css } from 'styled-components'
 
 const StyledButton = styled.button`

@@ -14,7 +14,6 @@ const Navbar = styled.nav`
       padding-left: 1em;
       padding-right: 1em;
    }
-
 `
 
 export default Navbar

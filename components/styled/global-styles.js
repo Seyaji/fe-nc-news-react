@@ -6,12 +6,11 @@ const GlobalStyles = createGlobalStyle`
 
   body {
      margin: 0;
-     /* font-family: "Monaco", monospace; */
      font-family: 'Rubik', sans-serif;
      font-weight: 300;
      background: ${({ theme }) => theme.background};
      color: ${({ theme }) => theme.color};
-     transition: all 0.50s linear; 
+     transition: all 0.50s linear;
   }
 
   & h1 {
@@ -19,6 +18,21 @@ const GlobalStyles = createGlobalStyle`
       font-family: 'Playfair Display', serif;
       font-weight: 800;
    }
+
+   & h2 {
+      font-size: 50px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+   }
+
+   & h3 {
+      padding: 0;
+      margin: .3em;
+      font-size: 30px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+   }
+   
 `
 
 export default GlobalStyles
