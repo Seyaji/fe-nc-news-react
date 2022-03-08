@@ -5,10 +5,12 @@ import styled, { css } from 'styled-components'
 const StyledButton = styled.button`
   background: transparent;
   border-radius: 30px;
-  border: 2px solid ${({ theme }) => theme.buttonBorder};
+  padding: 0;
+  border: 2px solid ${({ theme }) => theme.color};
   color: ${({ theme }) => theme.color};
-  margin: 0.5em 1em;
-  padding: 0.25em 1em;
+  height: 30px;
+  width: 30px;
+  /* transition: border 0.50s ease-out; */
 
 `;
 
@@ -19,11 +21,13 @@ const ThemeButton = ({ currentTheme, setCurrentTheme, dark, light }) => {
       setCurrentTheme(currentTheme.id === '🌙' ? theme.light : theme.dark)
    }
    return (
-      <StyledButton 
-      type='button' 
-      onClick={handleChange}>
-      {currentTheme.id}
-      </StyledButton>
+      <h3>
+         <StyledButton 
+         type='button' 
+         onClick={handleChange}>
+         {currentTheme.id}
+         </StyledButton>
+      </h3>
    )
 }
 
