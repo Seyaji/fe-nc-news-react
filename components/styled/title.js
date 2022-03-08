@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components'
 
-const styledTitle = styled.div`
+const StyledTitle = styled.div`
    display : flex;
    flex-direction: column;
 `
