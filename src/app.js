@@ -2,8 +2,7 @@
 import React from 'react';
 import { useState } from 'react'
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-dom";
 import * as api from '../api/api'
 
 // -----------~~~=*%$}> Pure Styled <{$%*=~~~-----------
@@ -19,26 +18,28 @@ import LeftNav from '../components/react/left-nav'
 
 // -----------~~~=*%$}> Pages <{$%*=~~~-----------
 import Home from '../components/pages/home';
+import Articles from '../components/pages/articles'
 
 
 
 function App() {
 
    const [ currentTheme, setCurrentTheme ] = useState(theme.dark)
+  
 
    return (
       <ThemeProvider theme={currentTheme} >
          <GlobalStyles />
+         <BrowserRouter>
          <Navbar>
             <LeftNav />
             <ThemeButton 
             currentTheme={currentTheme}
             setCurrentTheme={setCurrentTheme}/>
          </Navbar>
-         <BrowserRouter>
             <Routes>
                <Route path='/' element={<Home />} />
-               <Route path='/' />
+               <Route path='/articles' element={<Articles />} />
                <Route path='/' />
             </Routes>
          </BrowserRouter>

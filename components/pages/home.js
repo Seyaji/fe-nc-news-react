@@ -5,10 +5,10 @@ import { getArticles } from '../../api/api'
 import Header from '../styled/header'
 import Headline from '../styled/headline'
 import StyledTitle from '../styled/title';
-import TextItalic from '../styled/text-italic';
+import AltText from '../styled/alt-text';
 import InlineDiv from '../styled/inline-div';
 import GridContainer from '../styled/gird-container';
-import Content from '../styled/content';
+import Content from '../styled-react/content';
 import LineBreak from '../styled/line'
 
 import CategoriesNav from '../styled-react/categories-nav'
@@ -40,15 +40,14 @@ const Home = () => {
          const maxBody = article.body.split('').slice(0, (characters || article.body.length -1)).join('') + '...'
 
          return (
-            <Content key={article.id}>
-               <h3>{article.title}</h3>
-               <InlineDiv>
-                  <TextItalic>Author: {article.author}</TextItalic>
-                  <TextItalic>{published(article)}</TextItalic>
-               </InlineDiv>
-                  <p>{maxBody}</p>
-            </Content>
-         )
+            <Content
+               key={article.id}
+               title={article.title}
+               author={article.author}
+               date={published(article)}
+               body={maxBody}
+            />
+         );
       })
 
    }
@@ -67,8 +66,8 @@ const Home = () => {
                   <StyledTitle>
                      <h3>{headline.title}</h3>
                         <InlineDiv>
-                           <TextItalic>Author: {headline.author}</TextItalic>
-                           <TextItalic>{published(headline)}</TextItalic>
+                           <AltText>Author: {headline.author}</AltText>
+                           <AltText>{published(headline)}</AltText>
                         </InlineDiv>
                      <p>{headline.body}</p>
                   </StyledTitle>

@@ -2,13 +2,18 @@ import React from "react"
 import styled from "styled-components"
 import { useState, useEffect } from "react"
 import { getTopics } from "../../api/api"
+import { Link } from 'react-router-dom' 
 import Header from "../styled/header"
 
 const CategoryDiv = styled(Header)`
    padding: 0em;
    border-color: ${({ theme }) => theme.extraColor};
 
-   & ul, li {
+   & nav {
+      margin: .5em;
+   }
+   & a {
+      color: ${({ theme }) => theme.color};
       display: inline;
       padding-left: .5em;
       padding-right: .5em;
@@ -33,15 +38,15 @@ const CategoriesNav = () => {
             return newItem.join('')
          }
          newTopic(topic.slug)
-      return <li key={index}>{newTopic(topic.slug)}</li>
+      return <Link to='/articles' key={index}>{newTopic(topic.slug)}</Link>
       })
    }
 
    return (
       <CategoryDiv>
-         <ul>
+         <nav>
             {categories && generateCategories(categories)}
-         </ul>
+         </nav>
       </CategoryDiv>
    )
 }

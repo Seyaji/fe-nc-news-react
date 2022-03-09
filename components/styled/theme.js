@@ -1,6 +1,7 @@
 export const dark = {
    id: '🌙',
-   background: '#1B1B24',
+   // background: '#1B1B24',
+   background: '#13131C',
    color: '#FFAC41',
    secondaryColor: '#FF1E56',
    extraColor: '#16752E',

@@ -13,6 +13,11 @@ const GlobalStyles = createGlobalStyle`
      transition: all 0.50s linear;
   }
 
+  & a {
+        color: ${({ theme }) => theme.color};
+        text-decoration: none;
+    }
+
   & h1 {
       font-size: 100px;
       font-family: 'Playfair Display', serif;
@@ -20,6 +25,8 @@ const GlobalStyles = createGlobalStyle`
    }
 
    & h2 {
+      padding: 0;
+      margin: 0;
       font-size: 50px;
       font-family: 'Playfair Display', serif;
       font-weight: 800;
@@ -27,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
 
    & h3 {
       padding: 0;
-      margin: .3em;
+      margin: 0;
       font-size: 30px;
       font-family: 'Playfair Display', serif;
       font-weight: 800;
