@@ -14,6 +14,15 @@ const GridContainer = styled.div`
       "content content"
       "content content"
       "content content";
+   transition: all 0.25s ease-in-out;
+   @media (max-width: 868px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      "content"
+      "content"
+      "content"
+      "content";
+   }
 `
 
 export default GridContainer

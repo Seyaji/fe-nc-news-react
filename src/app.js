@@ -22,6 +22,7 @@ import Articles from '../components/pages/articles'
 
 
 
+
 function App() {
 
    const [ currentTheme, setCurrentTheme ] = useState(theme.dark)
@@ -40,6 +41,8 @@ function App() {
             <Routes>
                <Route path='/' element={<Home />} />
                <Route path='/articles' element={<Articles />} />
+               <Route path='/articles/:topic' element={<Articles />} />
+               <Route path='/articles/:id' element={<Articles />} />
                <Route path='/' />
             </Routes>
          </BrowserRouter>

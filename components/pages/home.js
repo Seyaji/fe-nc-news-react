@@ -10,6 +10,7 @@ import InlineDiv from '../styled/inline-div';
 import GridContainer from '../styled/gird-container';
 import Content from '../styled-react/content';
 import LineBreak from '../styled/line'
+import Spotlight from '../styled-react/spotlight'
 
 import CategoriesNav from '../styled-react/categories-nav'
 
@@ -41,7 +42,8 @@ const Home = () => {
 
          return (
             <Content
-               key={article.id}
+               key={article.article_id}
+               id={article.article_id}
                title={article.title}
                author={article.author}
                date={published(article)}
@@ -65,6 +67,7 @@ const Home = () => {
                headline && (
                   <StyledTitle>
                      <h3>{headline.title}</h3>
+                        <Spotlight />
                         <InlineDiv>
                            <AltText>Author: {headline.author}</AltText>
                            <AltText>{published(headline)}</AltText>
@@ -74,13 +77,14 @@ const Home = () => {
                )
             }
          </Headline>
-         <GridContainer>
-            { articles && generateArticles(articles, 1, 7, 140)}
-         </GridContainer>
-         <LineBreak></LineBreak>
-         <GridContainer>
-            { articles && generateArticles(articles, 7, 13, 140)}
-         </GridContainer>
+            <GridContainer>
+               { articles && generateArticles(articles, 1, 7, 140)}
+            </GridContainer>
+         <LineBreak />
+            <GridContainer>
+               { articles && generateArticles(articles, 7, 13, 140)}
+            </GridContainer>
+         <LineBreak />
       </>
    );
 }

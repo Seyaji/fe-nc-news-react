@@ -11,10 +11,17 @@ const Navbar = styled.nav`
    display: flex;
    justify-content: space-between;
    align-items: center;
+   transition: all 0.50s linear;
+   padding-left: 1em;
+   padding-right: 1em;
 
    & h3 {
       padding-left: 1em;
       padding-right: 1em;
+   }
+
+   & a:hover {
+      text-decoration: none;
    }
 `
 

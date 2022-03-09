@@ -38,7 +38,7 @@ const CategoriesNav = () => {
             return newItem.join('')
          }
          newTopic(topic.slug)
-      return <Link to='/articles' key={index}>{newTopic(topic.slug)}</Link>
+      return <Link key={index} to={`/articles/${topic.slug}`} >{newTopic(topic.slug)}</Link>
       })
    }
 

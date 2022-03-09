@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 import InlineDiv from '../styled/inline-div';
 import AltText from '../styled/alt-text';
 
@@ -11,10 +12,10 @@ const StyledContent = styled.div`
 `;
 
 
-const Content = ({ title, author, date, body }) => {
+const Content = ({ id, title, author, date, body }) => {
    return (
       <StyledContent>
-         <h3>{title}</h3>
+         <h3><Link to={`/articles/${id}`} params={ { article_id: id } }>{ title }</Link></h3>
          <InlineDiv>
             <AltText>Author: {author}</AltText>
             <AltText>{date}</AltText>
