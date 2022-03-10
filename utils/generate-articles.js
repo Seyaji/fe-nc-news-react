@@ -20,25 +20,33 @@ const generateArticles = (array, layout, characters) => {
       const lineBreak = layout[index - 1] === 'break' ? <LineBreak /> : null
       const populate = (articles) => articleList.map((article) => {
 
-         if (number === 'break') {
-            return (
-               <>
-                  <HeadlineTitle key={article.id} id={article.id} title={article.title} />
-               </>
-            );
-         }
-
          const maxBody =
             article.body
                .split('')
                .slice(0, characters || article.body.length - 1)
                .join('') + '...';
 
+         const maxTitle =
+            article.title.length > 40 
+               ? article.title
+               .split('')
+               .slice(0, 40 || article.body.length - 1)
+               .join('') + '...'
+               : article.title
+
+         if (number === 'break') {
+            return (
+               <>
+                  <HeadlineTitle key={article.id} id={article.id} title={maxTitle} />
+               </>
+            );
+         }
+
          return (
             <Content
                key={article.article_id}
                id={article.article_id}
-               title={article.title}
+               title={maxTitle}
                author={article.author}
                date={published(article)}
                body={maxBody}

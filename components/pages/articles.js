@@ -8,11 +8,13 @@ import Content from '../styled-react/content'
 import GridContainer from '../styled/gird-container'
 
 import generateArticles from '../../utils/generate-articles';
+import pageTitle from '../../utils/page-title'
 
 
 const Articles = () => {
 
    const params = useParams()
+   const location = useLocation()
 
    const [ articles, setArticles ] = useState(null)
 
@@ -26,7 +28,7 @@ const Articles = () => {
    return (
       <>
          <Header>
-               {articles && <h3>{articles[0].topic}</h3>}
+               {articles && <h3>{pageTitle(location.pathname)}</h3>}
          </Header>
                {articles && generateArticles(articles, ['all', 4], 140)}
       </>

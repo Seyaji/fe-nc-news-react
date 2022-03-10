@@ -45,6 +45,7 @@ const CategoriesNav = () => {
    return (
       <CategoryDiv>
          <nav>
+            <Link to={'/articles'}>All Articles</Link>
             {categories && generateCategories(categories)}
          </nav>
       </CategoryDiv>
