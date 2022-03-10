@@ -22,13 +22,13 @@ const CategoryDiv = styled(Header)`
 
 const CategoriesNav = () => {
 
-      const [ categories, setCategories ] = useState(null)
-      useEffect(() => {
-         getTopics()
-         .then(result => {
-            setCategories(result)
-         })
-      }, [])
+   const [ categories, setCategories ] = useState(null)
+   useEffect(() => {
+      getTopics()
+      .then(result => {
+         setCategories(result)
+      })
+   }, [])
 
    const generateCategories = (topics) => {
       return topics.map((topic, index) => {

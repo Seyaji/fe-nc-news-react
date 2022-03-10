@@ -5,12 +5,24 @@ const api = axios.create({
 })
 
 export const getArticles = async (params) => {
+
+   const path = params?.id 
+   ? `/articles/${params.id}` 
+   : '/articles'
+
    return api({
       method: 'get',
-      url: '/articles',
+      url: path,
       params: params
    })
-   .then((response) => response.data.articles)
+   .then((response) => {
+
+      const responseKey = params?.id 
+      ? response.data 
+      : response.data.articles
+
+      return responseKey
+   })
    .catch((error) => console.log(error))
 }
 

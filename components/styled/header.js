@@ -11,8 +11,9 @@ const Header = styled.div`
    margin-left: 15%;
    margin-right: 15%;
 
-   & h1 {
+   & h1,h3 {
       margin-bottom: -0.5em;
    }
+
 `
 export default Header

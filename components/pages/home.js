@@ -1,60 +1,30 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
-import { getArticles } from '../../api/api'
+import { useState, useEffect } from 'react';
+import { getArticles } from '../../api/api';
 
-import Header from '../styled/header'
-import Headline from '../styled/headline'
-import StyledTitle from '../styled/title';
-import AltText from '../styled/alt-text';
-import InlineDiv from '../styled/inline-div';
-import GridContainer from '../styled/gird-container';
-import Content from '../styled-react/content';
-import LineBreak from '../styled/line'
-import Spotlight from '../styled-react/spotlight'
+import Header from '../styled/header';
+import LineBreak from '../styled/line';
+import FocusedArticle from '../react/focused-article'
+import CategoriesNav from '../styled-react/categories-nav';
 
-import CategoriesNav from '../styled-react/categories-nav'
-
+import generateArticles from '../../utils/generate-articles';
+import published from '../../utils/published'
 
 const Home = () => {
-
-   const [ articles, setArticles ] = useState(null)
-   const [ headline, setHeadline ] = useState(null)
+   const [articles, setArticles] = useState(null);
+   const [headline, setHeadline] = useState(null);
 
    useEffect(() => {
-      getArticles()
-      .then(articleList => {
-         setArticles(articleList)
-
-      })
-   }, [])
+      getArticles().then((articleList) => {
+         setArticles(articleList);
+      });
+   }, []);
 
    const findHeadline = (() => {
       if (articles && !headline) {
-         setHeadline(articles[0])
+         setHeadline(articles[0]);
       }
-   })()
-
-   const generateArticles = (array, start, end, characters) => {
-      const portion = array.slice(start, end)
-      return portion.map(article => {
-
-         const maxBody = article.body.split('').slice(0, (characters || article.body.length -1)).join('') + '...'
-
-         return (
-            <Content
-               key={article.article_id}
-               id={article.article_id}
-               title={article.title}
-               author={article.author}
-               date={published(article)}
-               body={maxBody}
-            />
-         );
-      })
-
-   }
-
-   const published = (source) => new Date(source?.created_at).toDateString()
+   })();
 
    return (
       <>
@@ -62,31 +32,17 @@ const Home = () => {
             <h1>Vibe</h1>
          </Header>
          <CategoriesNav />
-         <Headline>
-            {
-               headline && (
-                  <StyledTitle>
-                     <h3>{headline.title}</h3>
-                        <Spotlight />
-                        <InlineDiv>
-                           <AltText>Author: {headline.author}</AltText>
-                           <AltText>{published(headline)}</AltText>
-                        </InlineDiv>
-                     <p>{headline.body}</p>
-                  </StyledTitle>
-               )
-            }
-         </Headline>
-            <GridContainer>
-               { articles && generateArticles(articles, 1, 7, 140)}
-            </GridContainer>
-         <LineBreak />
-            <GridContainer>
-               { articles && generateArticles(articles, 7, 13, 140)}
-            </GridContainer>
+            {headline && 
+            <FocusedArticle
+            title={headline.title}
+            author={headline.author}
+            date={published(headline)}
+            body={headline.body}
+            />}
+            {articles && generateArticles(articles, [2, 3, 'break', 3, 3, 4], 140)}
          <LineBreak />
       </>
    );
-}
+};
 
 export default Home;

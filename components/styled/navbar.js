@@ -18,6 +18,7 @@ const Navbar = styled.nav`
    & h3 {
       padding-left: 1em;
       padding-right: 1em;
+      margin: 0;
    }
 
    & a:hover {

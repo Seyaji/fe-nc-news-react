@@ -38,9 +38,14 @@ const GlobalStyles = createGlobalStyle`
    }
 
    & h3 {
-      padding: 0;
-      margin: 0;
       font-size: 30px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+   }
+
+   & h4 {
+      text-align: left;
+      font-size: 20px;
       font-family: 'Playfair Display', serif;
       font-weight: 800;
    }

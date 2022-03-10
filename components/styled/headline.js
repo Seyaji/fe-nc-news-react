@@ -7,7 +7,6 @@ const Headline = styled.div`
    border-bottom: 1px solid ${({ theme }) => theme.secondaryColor};
    margin-left: 18%;
    margin-right: 18%;
-   margin-top: 3em;
    margin-bottom: 3em;
    display: flex;
    justify-content: inline;
@@ -17,6 +16,7 @@ const Headline = styled.div`
    & h3 {
       text-align: center;
       text-justify: inter-word;
+      
    }
 
 `
