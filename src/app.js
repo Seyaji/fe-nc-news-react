@@ -1,40 +1,52 @@
-
+// -----------~~~=*%$}> Libraries <{$%*=~~~-----------
 import React from 'react';
-import HelloWorld from '../components/hello-world'
-import ThemeButton from '../components/theme-button'
-import * as theme from '../components/theme'
-import GlobalStyles from '../components/global-styles'
-import Navbar from '../components/navbar';
-import Header from '../components/header'
-import CategoriesNav from '../components/categories-nav'
 import { useState } from 'react'
 import { ThemeProvider } from 'styled-components';
+import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-dom";
 import * as api from '../api/api'
 
+// -----------~~~=*%$}> Pure Styled <{$%*=~~~-----------
+import GlobalStyles from '../components/styled/global-styles'
+import * as theme from '../components/styled/theme'
+import Navbar from '../components/styled/navbar';
+
+// -----------~~~=*%$}> Hybrid Styled <{$%*=~~~-----------
+import ThemeButton from '../components/styled-react/theme-button'
+
+// -----------~~~=*%$}> React <{$%*=~~~-----------
+import LeftNav from '../components/react/left-nav'
+
+// -----------~~~=*%$}> Pages <{$%*=~~~-----------
+import Home from '../components/pages/home';
+import Articles from '../components/pages/articles'
+
+
+
+
 function App() {
-   const [ currentTheme, setCurrentTheme ] = useState(theme.light)
-   const [results, setresults] = useState({
-      results: ''
-   })
-   const handleAsync = async () => {
-      const results = await api.getArticles()
-      console.log(results)
-   }
-   // handleAsync()
+
+   const [ currentTheme, setCurrentTheme ] = useState(theme.dark)
+  
+
    return (
       <ThemeProvider theme={currentTheme} >
          <GlobalStyles />
+         <BrowserRouter>
          <Navbar>
-            <HelloWorld />
+            <LeftNav />
             <ThemeButton 
             currentTheme={currentTheme}
             setCurrentTheme={setCurrentTheme}/>
          </Navbar>
-         <Header>
-            <h1>Vibe</h1>
-         </Header>
-         <CategoriesNav/>
-         
+            <Routes>
+               <Route path='/' element={<Home />} />
+               <Route path='/articles' element={<Articles />} />
+               <Route path='/articles/:topic' element={<Articles />} />
+               <Route path='/articles/id/:id' element={<Articles />} />
+               <Route path='/' />
+            </Routes>
+         </BrowserRouter>
+
       </ThemeProvider>
    )
 }
