@@ -24,7 +24,13 @@ const Articles = () => {
       .then(result => {
          setArticles(result)
       })
-   }, [])
+   }, [params])
+   
+   useEffect(() => {
+      console.log('effect')
+      selectLayout()
+   }, [articles])
+
 
    const selectLayout = () => {
       return articles?.title

@@ -6,11 +6,11 @@ import HeadlineTitle from '../components/styled-react/headline-title'
 import LineBreak from '../components/styled/line'
 
 const generateArticles = (array, layout, characters) => {
+   if (array === null) return
 
    if (layout[0] === 'all') {
       layout = Array(Math.round(array.length / layout[1])).fill(layout[1])
    }
-   console.log(array[0])
    const items = [...array]
    const portion = (start, end) => items.splice(start, end);
 

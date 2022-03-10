@@ -32,7 +32,6 @@ const Content = ({ id, title, author, date, body, votes }) => {
                <AltText>Votes: {votes}</AltText>
             <p>{body}</p>
          </StyledContent>
-         
       </>
    );
 }
