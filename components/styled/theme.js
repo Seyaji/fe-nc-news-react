@@ -6,7 +6,8 @@ export const dark = {
    secondaryColor: '#FF1E56',
    extraColor: '#16752E',
    buttonBorder: '#515d90',
-   linkColor: '#FF1E56'
+   linkColor: '#FF1E56',
+   likes: '#FF1E56'
 }
 
 export const light = {
@@ -17,6 +18,8 @@ export const light = {
    extraColor: '#47AD45',
    buttonBorder: '#393a3d',
    linkColor: '#47AD45',
+   likes: '#47AD45'
+   
 }
 
 export default { light, dark }

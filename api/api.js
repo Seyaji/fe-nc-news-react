@@ -34,3 +34,10 @@ export const getTopics = async () => {
    .then((response) => response.data)
    .catch((error) => console.log(error))
 }
+
+export const patchVotes = async (params) => {
+   console.log(params)
+   return api.post(`/articles/${params.id}`, { inc_votes: params.inc_votes })
+   .then((response) => response.data)
+   .catch((error) => console.log(error))
+}

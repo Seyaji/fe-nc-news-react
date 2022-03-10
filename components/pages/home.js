@@ -38,6 +38,8 @@ const Home = () => {
             author={headline.author}
             date={published(headline)}
             body={headline.body}
+            votes={headline.votes}
+            id={headline.article_id}
             />}
             {articles && generateArticles(articles, [2, 3, 'break', 3, 3, 4], 140)}
          <LineBreak />

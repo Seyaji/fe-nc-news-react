@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import InlineDiv from '../styled/inline-div';
 import AltText from '../styled/alt-text';
 import GridContainer from '../styled/gird-container'
+import Likes from '../styled-react/likes'
 
 const StyledContent = styled.div`
    border-bottom: 1px solid ${({ theme }) => theme.extraColor};
@@ -29,7 +30,7 @@ const Content = ({ id, title, author, date, body, votes }) => {
                <AltText>Author: {author}</AltText>
                <AltText>{date}</AltText>
             </InlineDiv>
-               <AltText>Votes: {votes}</AltText>
+               <Likes votes={votes} id={id}/>
             <p>{body}</p>
          </StyledContent>
       </>
