@@ -39,7 +39,8 @@ const Articles = () => {
       author={articles.author}
       date={published(articles)}
       body={articles.body}
-      id={articles.id}
+      id={articles.article_id}
+      votes={articles.votes}
       />
       : generateArticles(articles, ['all', 4], 140)
    }
