@@ -18,16 +18,22 @@ const StyledContent = styled.div`
 `;
 
 
-const Content = ({ id, title, author, date, body }) => {
+const Content = ({ id, title, author, date, body, votes }) => {
    return (
-      <StyledContent>
-         <h3><Link to={`/articles/id/${id}`}>{ title }</Link></h3>
-         <InlineDiv>
-            <AltText>Author: {author}</AltText>
-            <AltText>{date}</AltText>
-         </InlineDiv>
-         <p>{body}</p>
-      </StyledContent>
+      <>
+         <StyledContent>
+            <h3>
+               <Link to={`/articles/id/${id}`}>{title}</Link>
+            </h3>
+            <InlineDiv>
+               <AltText>Author: {author}</AltText>
+               <AltText>{date}</AltText>
+            </InlineDiv>
+               <AltText>Votes: {votes}</AltText>
+            <p>{body}</p>
+         </StyledContent>
+         
+      </>
    );
 }
 
