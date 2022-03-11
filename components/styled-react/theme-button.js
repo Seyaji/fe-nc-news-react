@@ -1,6 +1,8 @@
 import React from 'react';
 import * as theme from '../styled/theme'
 import styled, { css } from 'styled-components'
+import Login from '../react/login'
+import InlineDiv from '../styled/inline-div';
 
 const StyledButton = styled.button`
   background: transparent;
@@ -10,6 +12,8 @@ const StyledButton = styled.button`
   color: ${({ theme }) => theme.color};
   height: 30px;
   width: 30px;
+
+  
   /* transition: border 0.50s ease-out; */
 
 `;
@@ -21,14 +25,15 @@ const ThemeButton = ({ currentTheme, setCurrentTheme, dark, light }) => {
       setCurrentTheme(currentTheme.id === '🌙' ? theme.light : theme.dark)
    }
    return (
-      <h3>
-         <StyledButton 
-         type='button' 
-         onClick={handleChange}>
-         {currentTheme.id}
-         </StyledButton>
-      </h3>
-   )
+      <InlineDiv>
+         <Login />
+         <h3>
+               <StyledButton type="button" onClick={handleChange}>
+                  {currentTheme.id}
+               </StyledButton>
+         </h3>
+      </InlineDiv>
+   );
 }
 
 export default ThemeButton;

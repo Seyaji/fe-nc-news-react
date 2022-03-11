@@ -35,9 +35,18 @@ export const getTopics = async () => {
    .catch((error) => console.log(error))
 }
 
+export const getUser = async (username) => {
+   return api({
+      method: 'get',
+      url: `/users/${username}`
+   })
+   .then((response) => response.data)
+   .catch((error) => console.log(error))
+}
+
 export const patchVotes = async (params) => {
    console.log(params)
-   return api.post(`/articles/${params.id}`, { inc_votes: params.inc_votes })
+   return api.patch(`/articles/${params.id}`, { inc_votes: params.inc_votes })
    .then((response) => response.data)
    .catch((error) => console.log(error))
 }

@@ -8,6 +8,8 @@ import Header from '../styled/header'
 import generateArticles from '../../utils/generate-articles';
 import pageTitle from '../../utils/page-title'
 import FocusedArticle from '../react/focused-article';
+import Layout from '../styled-react/layout'
+import FlexLeft from '../styled/flex-left'
 
 import published from '../../utils/published';
 
@@ -18,6 +20,7 @@ const Articles = () => {
    const location = useLocation()
 
    const [ articles, setArticles ] = useState(null)
+   const [ layout, setLayout ] = useState(4)
 
    useEffect(() => {
       getArticles(params)
@@ -29,7 +32,7 @@ const Articles = () => {
    useEffect(() => {
       console.log('effect')
       selectLayout()
-   }, [articles])
+   }, [articles, layout])
 
 
    const selectLayout = () => {
@@ -42,7 +45,7 @@ const Articles = () => {
       id={articles.article_id}
       votes={articles.votes}
       />
-      : generateArticles(articles, ['all', 4], 140)
+      : generateArticles(articles, ['all', layout], 140)
    }
    
    return (
@@ -50,6 +53,10 @@ const Articles = () => {
          <Header>
                {articles && <h3>{pageTitle(location.pathname)}</h3>}
          </Header>
+         <FlexLeft>
+            <p>choose results layout: </p>
+            <Layout setLayout={setLayout}/>
+         </FlexLeft>
                {articles && selectLayout()}
       </>
    )
