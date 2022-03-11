@@ -13,14 +13,18 @@ export const getArticles = async (params) => {
    return api({
       method: 'get',
       url: path,
-      params: params
+      params: {
+         sort_by: params?.sort_by,
+         order: params?.order,
+         title: params?.title
+      }
    })
    .then((response) => {
 
       const responseKey = params?.id 
       ? response.data 
       : response.data.articles
-
+      console.log(response.data)
       return responseKey
    })
    .catch((error) => console.log(error))
@@ -40,10 +44,7 @@ export const getUser = async (username) => {
       method: 'get',
       url: `/users/${username}`
    })
-   .then((response) => {
-      console.log(response.data)
-      response.data
-   })
+   .then((response) => response.data)
    .catch((error) => console.log(error))
 }
 

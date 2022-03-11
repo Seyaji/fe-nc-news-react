@@ -44,9 +44,7 @@ const generateArticles = (array, layout, characters) => {
 
          if (number === 'break') {
             return (
-               <>
                   <HeadlineTitle key={article.article_id + 'headline'} id={article.id} title={maxTitle} />
-               </>
             );
          }
 
@@ -63,12 +61,12 @@ const generateArticles = (array, layout, characters) => {
          );
       })
       return (
-         <>
+         <div key={'grid' + index}>
                {lineBreak}
             <GridContainer key={index + 'gridContainer'} columns={columns}>
                {populate(articleList)}
             </GridContainer>
-         </>
+         </div>
       )
    });
 

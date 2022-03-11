@@ -76,6 +76,9 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
    }, [loginAttempt]);
 
    const handleClick = (event) => {
+      if (event.target.value === 'logout') {
+         setActiveUser(null)
+      }
       if (!event.target.value) {
          setIsOpen(!open);
       }
@@ -88,6 +91,7 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
 
    return (
       <FormBox>
+         {!activeUser && <>
          <Label htmlFor="label">Login for user privilidges</Label>
          <Input id="label" onChange={handleChange} />
          <Message>Enter your username and click submit</Message>
@@ -99,6 +103,18 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
                cancel
             </Button>
          </InlineDiv>
+         </>}
+         {activeUser && <>
+         <Label htmlFor="label">Login to keep your accout secure</Label>
+         <InlineDiv>
+            <Button type="button" onClick={handleClick} value={'logout'}>
+               logout
+            </Button>
+            <Button type="button" onClick={handleClick} >
+               cancel
+            </Button>
+         </InlineDiv>
+         </>}
       </FormBox>
    );
 };

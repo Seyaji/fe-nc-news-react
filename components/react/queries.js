@@ -3,15 +3,18 @@ import OptionsButton from '../styled/options-button'
 import InlineDiv from '../styled/inline-div';
 
 
-const Queries = ({setQueries, params}) => {
+const Queries = ({setQueries}) => {
    const handleClick = (event) => {
-      console.log(params)
-      setQueries(event.target.value)
+      setQueries((currentValue) => {
+         const copy = { ...currentValue }
+         copy.order = event.target.value
+         return copy
+      })
    }
    return (
       <InlineDiv>
-         <OptionsButton type="button" onClick={handleClick} value={1}>Asc</OptionsButton>
-         <OptionsButton type="button" onClick={handleClick} value={1}>Desc</OptionsButton>
+         <OptionsButton type="button" onClick={handleClick} value={'asc'}>↟Asc</OptionsButton>
+         <OptionsButton type="button" onClick={handleClick} value={'desc'}>↡Desc</OptionsButton>
       </InlineDiv>
    )
 }

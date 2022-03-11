@@ -12,6 +12,8 @@ import Layout from '../react/layout'
 import Queries from '../react/queries'
 import FlexLeft from '../styled/flex-left'
 import CategoriesNav from '../styled-react/categories-nav'
+import DropdownBox from '../styled-react/dropdown-box'
+import LabelButton from '../styled/label-button';
 
 import published from '../../utils/published';
 
@@ -23,17 +25,22 @@ const Articles = () => {
 
    const [ articles, setArticles ] = useState(null)
    const [ layout, setLayout ] = useState(4)
-   const [ queries, setQueries ] = useState(null)
+   const [ queries, setQueries ] = useState({
+      topic: params?.topic,
+      sort_by: params?.sort_by,
+      order: params?.order,
 
-   const paramSelect = queries ? queries : params
+   })
+
+   const paramSelect = queries && !params.id ? queries : params
 
    useEffect(() => {
-      console.log(params)
-      getArticles(params)
+      console.log(queries)
+      getArticles(paramSelect)
       .then(result => {
          setArticles(result)
       })
-   }, [params])
+   }, [queries, params])
    
    useEffect(() => {
       selectLayout()
@@ -61,11 +68,17 @@ const Articles = () => {
          { !params?.id &&
             <>
                <FlexLeft>
-                  <p>choose sort order: </p>
-                  <Queries setQueries={setQueries} params={params} />
+                  <p><LabelButton>topic ↠</LabelButton><DropdownBox setQueries={setQueries} /></p>
                </FlexLeft>
                <FlexLeft>
-                  <p>choose results layout: </p>
+                  <p><LabelButton>sort order ↠</LabelButton>{'  '}</p>
+                  <Queries 
+                  queries={queries} 
+                  setQueries={setQueries} 
+                  />
+               </FlexLeft>
+               <FlexLeft>
+                  <p><LabelButton>layout ↠</LabelButton></p>
                   <Layout setLayout={setLayout} />
                </FlexLeft>
             </>
