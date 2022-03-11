@@ -10,6 +10,7 @@ import pageTitle from '../../utils/page-title'
 import FocusedArticle from '../react/focused-article';
 import Layout from '../styled-react/layout'
 import FlexLeft from '../styled/flex-left'
+import CategoriesNav from '../styled-react/categories-nav'
 
 import published from '../../utils/published';
 
@@ -30,9 +31,8 @@ const Articles = () => {
    }, [params])
    
    useEffect(() => {
-      console.log('effect')
       selectLayout()
-   }, [articles, layout])
+   }, [articles, layout, params])
 
 
    const selectLayout = () => {
@@ -44,8 +44,9 @@ const Articles = () => {
       body={articles.body}
       id={articles.article_id}
       votes={articles.votes}
+      comments={true}
       />
-      : generateArticles(articles, ['all', layout], 140)
+      : generateArticles(articles, ['all', +layout], 140)
    }
    
    return (
@@ -53,6 +54,7 @@ const Articles = () => {
          <Header>
                {articles && <h3>{pageTitle(location.pathname)}</h3>}
          </Header>
+         <CategoriesNav key={"category articles"}/>
          <FlexLeft>
             <p>choose results layout: </p>
             <Layout setLayout={setLayout}/>

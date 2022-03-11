@@ -40,13 +40,32 @@ export const getUser = async (username) => {
       method: 'get',
       url: `/users/${username}`
    })
-   .then((response) => response.data)
+   .then((response) => {
+      console.log(response.data)
+      response.data
+   })
    .catch((error) => console.log(error))
 }
 
 export const patchVotes = async (params) => {
    console.log(params)
    return api.patch(`/articles/${params.id}`, { inc_votes: params.inc_votes })
+   .then((response) => response.data)
+   .catch((error) => console.log(error))
+}
+
+export const getComments = (id) => {
+   return api({
+      method: 'get',
+      url: `/articles/${id}/comments`,
+   })
+   .then((response) => response.data)
+   .catch((error) => console.log(error))
+}
+
+export const patchComments = async (params) => {
+   console.log(params)
+   return api.patch(`/comments/${params.id}`, { inc_votes: params.inc_votes })
    .then((response) => response.data)
    .catch((error) => console.log(error))
 }

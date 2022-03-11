@@ -57,8 +57,9 @@ const Button = styled.button`
 `
 
 const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
-   
-   const [username, setUsername] = useState(null);
+
+   const [ username, setUsername ] = useState(null);
+   const [ loginAttempt, setLoginAttempt ] = useState(null);
 
    const handleChange = (event) => {
       setUsername(event.target.value);
@@ -66,9 +67,9 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
 
    useEffect(() => {
       getUser(username)
-      .then(response => response.data)
+      .then(response => response)
       .then(user => setActiveUser(user))
-   }, [activeUser]);
+   }, [loginAttempt]);
 
    const handleClick = (event) => {
       if (!event.target.value) {
@@ -76,9 +77,8 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
       }
       if (event.target.value) {
          setIsOpen(!open);
-         setActiveUser(username);
+         setLoginAttempt(username);
       }
-      console.log('clicked')
    };
 
    return (

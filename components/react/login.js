@@ -33,7 +33,7 @@ const LoginContent = styled.div`
 
 const Login = () => {
    const [ open, setIsOpen] = useState(false)
-   const [activeUser, setActiveUser] = useState(null);
+   const [ activeUser, setActiveUser] = useState(null);
 
    const handleClick = (event) => {
       console.log('clicked')
@@ -48,7 +48,7 @@ const Login = () => {
             </LoginContent>
          </LoginBox>
          {!activeUser && <a onClick={handleClick}>Login</a>}
-         {activeUser && <a onClick={handleClick}>{activeUser}</a>}
+         {activeUser && <a onClick={handleClick}>{activeUser.name}</a>}
       </>
    );
 };

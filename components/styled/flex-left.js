@@ -5,7 +5,7 @@ const FlexLeft = styled.div`
    margin-left: 18%;
    margin-right: 18%;
    display: flex;
-   justify-content: right;
+   justify-content: left;
 
 `
 

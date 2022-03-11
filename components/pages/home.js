@@ -31,9 +31,10 @@ const Home = () => {
          <Header>
             <h1>Vibe</h1>
          </Header>
-         <CategoriesNav />
+         <CategoriesNav key={"category home"} />
             {headline && 
             <FocusedArticle
+            key={headline.article_id + 'headline'}
             title={headline.title}
             author={headline.author}
             date={published(headline)}
@@ -42,7 +43,7 @@ const Home = () => {
             id={headline.article_id}
             />}
             {articles && generateArticles(articles, [2, 3, 'break', 3, 3, 4], 140)}
-         <LineBreak />
+         <LineBreak key={'linebreak'} />
       </>
    );
 };

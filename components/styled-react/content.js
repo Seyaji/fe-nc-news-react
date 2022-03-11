@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import InlineDiv from '../styled/inline-div';
 import AltText from '../styled/alt-text';
 import GridContainer from '../styled/gird-container'
-import Likes from '../styled-react/likes'
+import Likes from './likes-articles'
 
 const StyledContent = styled.div`
    border-bottom: 1px solid ${({ theme }) => theme.extraColor};
