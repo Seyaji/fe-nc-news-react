@@ -18,7 +18,7 @@ const Comments = ({id}) => {
    const generateComments = (array) => {
       return array.map((comment, index) => {
          return (
-            <CommentBox key={comment.id + 'COMMENT'} comment={comment} />
+            <CommentBox key={comment.id + 'COMMENT' + index} comment={comment} />
          )
       })
    }

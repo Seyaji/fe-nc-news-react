@@ -8,7 +8,8 @@ import Header from '../styled/header'
 import generateArticles from '../../utils/generate-articles';
 import pageTitle from '../../utils/page-title'
 import FocusedArticle from '../react/focused-article';
-import Layout from '../styled-react/layout'
+import Layout from '../react/layout'
+import Queries from '../react/queries'
 import FlexLeft from '../styled/flex-left'
 import CategoriesNav from '../styled-react/categories-nav'
 
@@ -22,8 +23,12 @@ const Articles = () => {
 
    const [ articles, setArticles ] = useState(null)
    const [ layout, setLayout ] = useState(4)
+   const [ queries, setQueries ] = useState(null)
+
+   const paramSelect = queries ? queries : params
 
    useEffect(() => {
+      console.log(params)
       getArticles(params)
       .then(result => {
          setArticles(result)
@@ -51,16 +56,22 @@ const Articles = () => {
    
    return (
       <>
-         <Header>
-               {articles && <h3>{pageTitle(location.pathname)}</h3>}
-         </Header>
-         <CategoriesNav key={"category articles"}/>
-         <FlexLeft>
-            <p>choose results layout: </p>
-            <Layout setLayout={setLayout}/>
-         </FlexLeft>
-               {articles && selectLayout()}
+         <Header>{articles && <h3>{pageTitle(location.pathname).replace('/', ' ')}</h3>}</Header>
+         <CategoriesNav key={'category articles'} />
+         { !params?.id &&
+            <>
+               <FlexLeft>
+                  <p>choose sort order: </p>
+                  <Queries setQueries={setQueries} params={params} />
+               </FlexLeft>
+               <FlexLeft>
+                  <p>choose results layout: </p>
+                  <Layout setLayout={setLayout} />
+               </FlexLeft>
+            </>
+         }
+         {articles && selectLayout()}
       </>
-   )
+   );
 }
 export default Articles

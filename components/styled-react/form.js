@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getUser } from '../../api/api';
 import InlineDiv from '../styled/inline-div';
 
@@ -65,10 +65,14 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
       setUsername(event.target.value);
    };
 
+   const mounted = useRef(false)
+
    useEffect(() => {
-      getUser(username)
-      .then(response => response)
-      .then(user => setActiveUser(user))
+      if (mounted.current) {
+         getUser(username)
+         .then(response => response)
+         .then(user => setActiveUser(user))
+      }
    }, [loginAttempt]);
 
    const handleClick = (event) => {
@@ -77,6 +81,7 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
       }
       if (event.target.value) {
          setIsOpen(!open);
+         mounted.current = true;
          setLoginAttempt(username);
       }
    };

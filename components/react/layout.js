@@ -3,20 +3,9 @@ import styled, { css } from 'styled-components';
 import InlineDiv from '../styled/inline-div';
 import OptionsButton from '../styled/options-button'
 
-const LayoutButton = styled.button`
-   background-color: ${({ theme }) => theme.color};
-   border-color: ${({ theme }) => theme.extraColor};
-   border: 1px solid;
-   cursor: pointer;
-   :hover { 
-      background-color: ${({ theme }) => theme.extraColor};
-   }
-`
-
 const Layout = ({ setLayout }) => {
    const handleClick = (event) => {
       setLayout(event.target.value)
-      console.log(`Layout`)
    }
    return (
       <InlineDiv>
