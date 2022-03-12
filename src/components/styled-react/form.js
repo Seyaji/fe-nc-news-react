@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { useEffect, useState, useRef } from 'react';
-import { getUser } from '../../api/api';
+import { getUser } from '../../../api/api';
 import InlineDiv from '../styled/inline-div';
 
 const FormBox = styled.div`

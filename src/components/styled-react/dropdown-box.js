@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useState, useEffect } from 'react'
-import { getTopics } from '../../api/api'
+import { getTopics } from '../../../api/api'
 import { Link } from 'react-router-dom'
 
 const Dropdown = styled.select`

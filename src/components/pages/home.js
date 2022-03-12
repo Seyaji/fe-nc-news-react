@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getArticles } from '../../api/api';
+import { getArticles } from '../../../api/api';
 
 import Header from '../styled/header';
 import LineBreak from '../styled/line';
 import FocusedArticle from '../react/focused-article'
 import CategoriesNav from '../styled-react/categories-nav';
 
-import generateArticles from '../../utils/generate-articles';
-import published from '../../utils/published'
+import generateArticles from '../../../utils/generate-articles';
+import published from '../../../utils/published'
 
 const Home = () => {
    const [articles, setArticles] = useState(null);

@@ -1,9 +1,9 @@
 import published from './published'
 import React from 'react'
-import Content from '../components/styled-react/content'
-import GridContainer from '../components/styled/gird-container'
-import HeadlineTitle from '../components/styled-react/headline-title'
-import LineBreak from '../components/styled/line'
+import Content from '../src/components/styled-react/content'
+import GridContainer from '../src/components/styled/gird-container'
+import HeadlineTitle from '../src/components/styled-react/headline-title'
+import LineBreak from '../src/components/styled/line'
 
 const generateArticles = (array, layout, characters) => {
    if (array === null) return

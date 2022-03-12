@@ -1,12 +1,10 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { getArticles } from '../../api/api'
+import { getArticles } from '../../../api/api'
 
 import Header from '../styled/header'
 
-import generateArticles from '../../utils/generate-articles';
-import pageTitle from '../../utils/page-title'
 import FocusedArticle from '../react/focused-article';
 import Layout from '../react/layout'
 import Queries from '../react/queries'
@@ -15,7 +13,9 @@ import CategoriesNav from '../styled-react/categories-nav'
 import DropdownBox from '../styled-react/dropdown-box'
 import LabelButton from '../styled/label-button';
 
-import published from '../../utils/published';
+import pageTitle from '../../../utils/page-title'
+import generateArticles from '../../../utils/generate-articles';
+import published from '../../../utils/published';
 
 
 const Articles = () => {

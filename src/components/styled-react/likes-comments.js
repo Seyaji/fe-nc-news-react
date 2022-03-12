@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Heart from '../../src/images/heart.svg';
+import Heart from '../../images/heart.svg';
 import AltText from '../styled/alt-text';
-import { patchVotes } from '../../api/api';
+import { patchVotes } from '../../../api/api';
 import { useEffect, useState, useRef } from 'react';
 
 const HeartLike = styled(Heart)`

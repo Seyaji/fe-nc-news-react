@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useState, useEffect } from 'react'
-import { getComments, getUser } from '../../api//api'
+import { getComments, getUser } from '../../../api/api'
 import InlineDiv from '../styled/inline-div';
-import published from '../../utils/published'
+import published from '../../../utils/published'
 import AltText from '../styled/alt-text'
 import Likes from '../styled-react/likes-comments'
 

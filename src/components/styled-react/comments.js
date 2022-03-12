@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useState, useEffect } from 'react'
-import { getComments, getUser } from '../../api//api'
+import { getComments, getUser } from '../../../api/api'
 import CommentBox from './comment-box'
 
 
