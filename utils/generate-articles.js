@@ -1,16 +1,16 @@
 import published from './published'
 import React from 'react'
-import Content from '../components/styled-react/content'
-import GridContainer from '../components/styled/gird-container'
-import HeadlineTitle from '../components/styled-react/headline-title'
-import LineBreak from '../components/styled/line'
+import Content from '../src/components/styled-react/content'
+import GridContainer from '../src/components/styled/gird-container'
+import HeadlineTitle from '../src/components/styled-react/headline-title'
+import LineBreak from '../src/components/styled/line'
 
 const generateArticles = (array, layout, characters) => {
+   if (array === null) return
 
    if (layout[0] === 'all') {
       layout = Array(Math.round(array.length / layout[1])).fill(layout[1])
    }
-   console.log(array[0])
    const items = [...array]
    const portion = (start, end) => items.splice(start, end);
 
@@ -18,7 +18,8 @@ const generateArticles = (array, layout, characters) => {
 
       const columns = typeof number === 'number' ? number : 4
       const articleList = portion(0, columns)
-      const lineBreak = layout[index - 1] === 'break' ? <LineBreak /> : null
+      const lineBreak = layout[index - 1] === 'break' ? <LineBreak key={number + 'break'} /> : null
+      
       const populate = (articles) => articleList.map((article) => {
 
          const textCap = {
@@ -44,15 +45,13 @@ const generateArticles = (array, layout, characters) => {
 
          if (number === 'break') {
             return (
-               <>
-                  <HeadlineTitle key={article.id} id={article.id} title={maxTitle} />
-               </>
+                  <HeadlineTitle key={article.article_id + 'headline'} id={article.id} title={maxTitle} />
             );
          }
 
          return (
             <Content
-               key={article.article_id}
+               key={article.article_id + 'Content'}
                id={article.article_id}
                title={maxTitle}
                author={article.author}
@@ -63,12 +62,12 @@ const generateArticles = (array, layout, characters) => {
          );
       })
       return (
-         <>
+         <div key={'grid' + index}>
                {lineBreak}
-            <GridContainer key={index} columns={columns}>
+            <GridContainer key={index + 'gridContainer'} columns={columns}>
                {populate(articleList)}
             </GridContainer>
-         </>
+         </div>
       )
    });
 

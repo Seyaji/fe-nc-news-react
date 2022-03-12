@@ -19,7 +19,8 @@ const GlobalStyles = createGlobalStyle`
    }
    & a:hover {
       text-decoration: underline;
-      color: ${({ theme }) => theme.linkColor}
+      color: ${({ theme }) => theme.linkColor};
+      cursor: pointer;
    }
 
 

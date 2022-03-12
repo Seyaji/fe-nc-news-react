@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useState, useEffect } from "react"
-import { getTopics } from "../../api/api"
+import { getTopics } from "../../../api/api"
 import { Link } from 'react-router-dom' 
 import Header from "../styled/header"
 
@@ -29,6 +29,7 @@ const CategoriesNav = () => {
          setCategories(result)
       })
    }, [])
+
 
    const generateCategories = (topics) => {
       return topics.map((topic, index) => {

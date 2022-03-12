@@ -6,19 +6,20 @@ import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-do
 import * as api from '../api/api'
 
 // -----------~~~=*%$}> Pure Styled <{$%*=~~~-----------
-import GlobalStyles from '../components/styled/global-styles'
-import * as theme from '../components/styled/theme'
-import Navbar from '../components/styled/navbar';
+import GlobalStyles from './components/styled/global-styles'
+import * as theme from './components/styled/theme'
+import Navbar from './components/styled/navbar';
 
 // -----------~~~=*%$}> Hybrid Styled <{$%*=~~~-----------
-import ThemeButton from '../components/styled-react/theme-button'
+import ThemeButton from './components/styled-react/theme-button'
+
 
 // -----------~~~=*%$}> React <{$%*=~~~-----------
-import LeftNav from '../components/react/left-nav'
+import LeftNav from './components/react/left-nav'
 
 // -----------~~~=*%$}> Pages <{$%*=~~~-----------
-import Home from '../components/pages/home';
-import Articles from '../components/pages/articles'
+import Home from './components/pages/home';
+import Articles from './components/pages/articles'
 
 
 
@@ -26,6 +27,7 @@ import Articles from '../components/pages/articles'
 function App() {
 
    const [ currentTheme, setCurrentTheme ] = useState(theme.dark)
+   
   
 
    return (
@@ -40,10 +42,9 @@ function App() {
          </Navbar>
             <Routes>
                <Route path='/' element={<Home />} />
-               <Route path='/articles' element={<Articles />} />
+               <Route path='/articles' element={<Articles id={'articles'}/>} />
                <Route path='/articles/:topic' element={<Articles />} />
                <Route path='/articles/id/:id' element={<Articles />} />
-               <Route path='/' />
             </Routes>
          </BrowserRouter>
 

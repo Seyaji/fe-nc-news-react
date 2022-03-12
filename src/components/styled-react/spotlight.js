@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css }from 'styled-components';
-import spotlight from '../../src/images/spotlight.png'
+import spotlight from '../../images/spotlight.png'
 
 const SpotlightImage = styled.img`
    /* background-image: url(${spotlight}); */

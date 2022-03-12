@@ -2,10 +2,12 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-   output: {
-     path: path.resolve(__dirname, 'build'),
-     filename: 'bundle.js',
-   },
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
    resolve: {
      modules: [path.join(__dirname, 'src'), 'node_modules'],
      alias: {
@@ -38,6 +40,17 @@ module.exports = {
         use: ['source-map-loader'],
       },
       {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: /url/, // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+        use: ['@svgr/webpack'],
+      },
+      {
         test: /\.(png|jpg|gif)$/i,
         use: [
           {
@@ -50,6 +63,9 @@ module.exports = {
       },
      ],
    },
+   devServer: {
+    historyApiFallback: true,
+  },
    plugins: [
      new HtmlWebPackPlugin({
        template: './src/index.html',
