@@ -19,6 +19,7 @@ const generateArticles = (array, layout, characters) => {
       const columns = typeof number === 'number' ? number : 4
       const articleList = portion(0, columns)
       const lineBreak = layout[index - 1] === 'break' ? <LineBreak key={number + 'break'} /> : null
+      
       const populate = (articles) => articleList.map((article) => {
 
          const textCap = {

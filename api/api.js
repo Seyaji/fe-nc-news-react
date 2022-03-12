@@ -14,6 +14,7 @@ export const getArticles = async (params) => {
       method: 'get',
       url: path,
       params: {
+         topic: params?.topic,
          sort_by: params?.sort_by,
          order: params?.order,
          title: params?.title
@@ -24,7 +25,6 @@ export const getArticles = async (params) => {
       const responseKey = params?.id 
       ? response.data 
       : response.data.articles
-      console.log(response.data)
       return responseKey
    })
    .catch((error) => console.log(error))

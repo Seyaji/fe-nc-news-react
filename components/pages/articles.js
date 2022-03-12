@@ -27,6 +27,7 @@ const Articles = () => {
    const [ layout, setLayout ] = useState(4)
    const [ queries, setQueries ] = useState({
       topic: params?.topic,
+      title: params?.title,
       sort_by: params?.sort_by,
       order: params?.order,
 
@@ -35,7 +36,6 @@ const Articles = () => {
    const paramSelect = queries && !params.id ? queries : params
 
    useEffect(() => {
-      console.log(queries)
       getArticles(paramSelect)
       .then(result => {
          setArticles(result)
@@ -64,10 +64,10 @@ const Articles = () => {
    return (
       <>
          <Header>{articles && <h3>{pageTitle(location.pathname).replace('/', ' ')}</h3>}</Header>
-         <CategoriesNav key={'category articles'} />
+         <CategoriesNav key={'category articles'} setQueries={setQueries}/>
          { !params?.id &&
             <>
-               <FlexLeft>
+               <FlexLeft >
                   <p><LabelButton>topic ↠</LabelButton><DropdownBox setQueries={setQueries} /></p>
                </FlexLeft>
                <FlexLeft>

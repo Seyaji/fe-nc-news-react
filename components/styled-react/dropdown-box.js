@@ -55,7 +55,6 @@ const DropdownBox = ({setQueries}) => {
       setQueries((currentValue) => {
          const copy = {...currentValue}
          copy.sort_by = event.target.value
-         console.log(copy)
          return copy
       })
    }
@@ -68,7 +67,6 @@ const DropdownBox = ({setQueries}) => {
           <DropdownContent key={'author'} value={'author'} onClick={handleClick}>author</DropdownContent>
           <DropdownContent key={'body'} value={'body'} onClick={handleClick}>body</DropdownContent>
           <DropdownContent key={'votes'} value={'votes'} onClick={handleClick}>votes</DropdownContent>
-
       </Dropdown>
    )
 }

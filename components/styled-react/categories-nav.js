@@ -30,6 +30,7 @@ const CategoriesNav = () => {
       })
    }, [])
 
+
    const generateCategories = (topics) => {
       return topics.map((topic, index) => {
          const newTopic = (item) => {
