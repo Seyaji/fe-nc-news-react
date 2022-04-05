@@ -29,6 +29,29 @@ const GridContainer = styled.div`
       "content"
       "content";
    }
+      /* Portrait */
+   @media only screen 
+   and (min-device-width: 375px) 
+   and (max-device-width: 812px) 
+   and (-webkit-min-device-pixel-ratio: 3)
+   and (orientation: portrait) { 
+      grid-template-columns: 2fr;
+      grid-template-areas:
+      "content"
+      "content";
+   }
+
+   /* Landscape */
+   @media only screen 
+   and (min-device-width: 375px) 
+   and (max-device-width: 812px) 
+   and (-webkit-min-device-pixel-ratio: 3)
+   and (orientation: landscape) { 
+      grid-template-columns: ${(props) => `repeat(${(props.columns)}, 1fr)`};
+      grid-template-areas:
+      "content content"
+      "content content";
+   }
 `
 
 export default GridContainer

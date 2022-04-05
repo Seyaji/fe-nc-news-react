@@ -6,7 +6,7 @@ import Form from '../styled-react/form'
 const LoginBox = styled.div`
    display: ${(props) => props.open};
    position: fixed;
-   z-index: 1;
+   z-index: 3;
    padding-top: 100px;
    left: 0;
    top: 0;
@@ -36,7 +36,6 @@ const Login = () => {
    const [ activeUser, setActiveUser] = useState(null);
 
    const handleClick = (event) => {
-      console.log('clicked')
       setIsOpen(!open)
    }
 

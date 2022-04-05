@@ -45,7 +45,7 @@ const generateArticles = (array, layout, characters) => {
 
          if (number === 'break') {
             return (
-                  <HeadlineTitle key={article.article_id + 'headline'} id={article.id} title={maxTitle} />
+                  <HeadlineTitle key={article.article_id + 'headline'} id={article.article_id} title={maxTitle} />
             );
          }
 

@@ -12,11 +12,13 @@ const StyledContent = styled.div`
    width: 100%;
    height: 100%;
 
-   & h3 {
-      padding: 0;
-      margin: 0;
-   }
 `;
+
+const TextBox = styled.div`
+   display: flex;
+   flex-direction: column;
+   align-content: flex-end;
+`
 
 
 const Content = ({ id, title, author, date, body, votes }) => {
@@ -30,8 +32,8 @@ const Content = ({ id, title, author, date, body, votes }) => {
                <AltText>Author: {author}</AltText>
                <AltText>{date}</AltText>
             </InlineDiv>
-               <Likes votes={votes} id={id}/>
-            <p>{body}</p>
+            <Likes votes={votes} id={id}/>
+               <p>{body}</p>
          </StyledContent>
       </>
    );

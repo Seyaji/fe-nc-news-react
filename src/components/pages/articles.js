@@ -10,8 +10,9 @@ import Layout from '../react/layout'
 import Queries from '../react/queries'
 import FlexLeft from '../styled/flex-left'
 import CategoriesNav from '../styled-react/categories-nav'
-import DropdownBox from '../styled-react/dropdown-box'
+import DropdownBox from '../styled-react/queries-dropdown-box'
 import LabelButton from '../styled/label-button';
+import QueriesBox from '../styled/queries-box'
 
 import pageTitle from '../../../utils/page-title'
 import generateArticles from '../../../utils/generate-articles';
@@ -25,7 +26,7 @@ const Articles = () => {
 
    const [ articles, setArticles ] = useState(null)
    const [ layout, setLayout ] = useState(4)
-   const [ queries, setQueries ] = useState({
+   const [ queries, setQueries ] = useState({ 
       topic: params?.topic,
       title: params?.title,
       sort_by: params?.sort_by,
@@ -44,7 +45,7 @@ const Articles = () => {
    
    useEffect(() => {
       selectLayout()
-   }, [articles, layout, params])
+   }, [articles, layout, queries])
 
 
    const selectLayout = () => {
@@ -52,7 +53,6 @@ const Articles = () => {
       ? <FocusedArticle
       title={articles.title}
       author={articles.author}
-      date={published(articles)}
       body={articles.body}
       id={articles.article_id}
       votes={articles.votes}
@@ -63,24 +63,20 @@ const Articles = () => {
    
    return (
       <>
-         <Header>{articles && <h3>{pageTitle(location.pathname).replace('/', ' ')}</h3>}</Header>
+         <Header>{articles && <h3>{pageTitle(location.pathname).replace(/[/]/ig, ': ')}</h3>}</Header>
          <CategoriesNav key={'category articles'} setQueries={setQueries}/>
          { !params?.id &&
             <>
-               <FlexLeft >
-                  <p><LabelButton>topic ↠</LabelButton><DropdownBox setQueries={setQueries} /></p>
-               </FlexLeft>
-               <FlexLeft>
-                  <p><LabelButton>sort order ↠</LabelButton>{'  '}</p>
+               <QueriesBox>
+                  <div><LabelButton>Sort By:</LabelButton><DropdownBox setQueries={setQueries} /></div>
+                  <div><LabelButton>Sort Order:</LabelButton>
                   <Queries 
                   queries={queries} 
                   setQueries={setQueries} 
-                  />
-               </FlexLeft>
-               <FlexLeft>
-                  <p><LabelButton>layout ↠</LabelButton></p>
-                  <Layout setLayout={setLayout} />
-               </FlexLeft>
+                  /></div>
+                  <div><LabelButton>Layout:</LabelButton>
+                  <Layout setLayout={setLayout} /></div>
+               </QueriesBox>
             </>
          }
          {articles && selectLayout()}

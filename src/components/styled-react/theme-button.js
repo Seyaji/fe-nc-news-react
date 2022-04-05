@@ -13,15 +13,10 @@ const StyledButton = styled.button`
   height: 30px;
   width: 30px;
 
-  
-  /* transition: border 0.50s ease-out; */
-
 `;
 
-
-
 const ThemeButton = ({ currentTheme, setCurrentTheme, dark, light }) => {
-   const handleChange = (event) => {
+   const handleChange = () => {
       setCurrentTheme(currentTheme.id === '🌙' ? theme.light : theme.dark)
    }
    return (
