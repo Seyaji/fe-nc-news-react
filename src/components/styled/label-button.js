@@ -8,6 +8,7 @@ const LabelButton = styled.button`
    border-color: ${({ theme }) => theme.extraColor};
    border-top-left-radius: 5px;
    border-bottom-left-radius: 5px;
+   padding: 5px;
    border: 1px solid;
    & :hover {
       background-color: ${({ theme }) => theme.buttonColor};

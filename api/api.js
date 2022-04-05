@@ -4,7 +4,7 @@ const api = axios.create({
    baseURL: 'https://seyaji-nc-news.herokuapp.com/api'
 })
 
-export const getArticles = async (params) => {
+export const getArticles = async (params, params2) => {
 
    const path = params?.id 
    ? `/articles/${params.id}` 
@@ -49,7 +49,6 @@ export const getUser = async (username) => {
 }
 
 export const patchVotes = async (params) => {
-   console.log(params)
    return api.patch(`/articles/${params.id}`, { inc_votes: params.inc_votes })
    .then((response) => response.data)
    .catch((error) => console.log(error))
@@ -65,7 +64,6 @@ export const getComments = (id) => {
 }
 
 export const patchComments = async (params) => {
-   console.log(params)
    return api.patch(`/comments/${params.id}`, { inc_votes: params.inc_votes })
    .then((response) => response.data)
    .catch((error) => console.log(error))

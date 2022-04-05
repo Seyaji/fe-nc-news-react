@@ -13,6 +13,7 @@ const Dropdown = styled.select`
    vertical-align: middle;
    border: 1px solid black;
    box-sizing: content-box;
+   z-index: 1;
     -moz-box-sizing:content-box;
     -webkit-box-sizing:content-box;
    & :focus {
@@ -33,6 +34,7 @@ const DropdownContent = styled.option`
    align-items: center;
    padding: 0;
    position: relative;
+   z-index: -1;
 
    & :hover {
       background-color: ${({ theme }) => theme.extraColor};
@@ -41,7 +43,7 @@ const DropdownContent = styled.option`
    }
 `
 
-const DropdownBox = ({setQueries}) => {
+const DropdownBox = ({ setQueries }) => {
    const [ categories, setCategories ] = useState(null)
    useEffect(() => {
       getTopics()
@@ -51,7 +53,6 @@ const DropdownBox = ({setQueries}) => {
    }, [])
 
    const handleClick = (event) => {
-      console.log(event)
       setQueries((currentValue) => {
          const copy = {...currentValue}
          copy.sort_by = event.target.value
@@ -59,14 +60,13 @@ const DropdownBox = ({setQueries}) => {
       })
    }
 
-
    return (
       <Dropdown onChange={handleClick}>
-          <DropdownContent key={'title'} value={'title'} onClick={handleClick}>title</DropdownContent>
-          <DropdownContent key={'date'} value={'created_at'} onClick={handleClick}>date</DropdownContent>
-          <DropdownContent key={'author'} value={'author'} onClick={handleClick}>author</DropdownContent>
-          <DropdownContent key={'body'} value={'body'} onClick={handleClick}>body</DropdownContent>
-          <DropdownContent key={'votes'} value={'votes'} onClick={handleClick}>votes</DropdownContent>
+          <DropdownContent key={'date'} value={'created_at'} >date</DropdownContent>
+          <DropdownContent key={'title'} value={'title'} >title</DropdownContent>
+          <DropdownContent key={'author'} value={'author'} >author</DropdownContent>
+          <DropdownContent key={'body'} value={'body'} >body</DropdownContent>
+          <DropdownContent key={'votes'} value={'votes'} >votes</DropdownContent>
       </Dropdown>
    )
 }

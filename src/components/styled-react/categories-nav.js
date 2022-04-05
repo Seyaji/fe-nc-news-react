@@ -20,8 +20,7 @@ const CategoryDiv = styled(Header)`
    }
 `
 
-const CategoriesNav = () => {
-
+const CategoriesNav = ( { setQueries } ) => {
    const [ categories, setCategories ] = useState(null)
    useEffect(() => {
       getTopics()
@@ -29,6 +28,14 @@ const CategoriesNav = () => {
          setCategories(result)
       })
    }, [])
+
+   const handleClick = (value) => {
+      setQueries((currentValue) => {
+         const copy = { ...currentValue }
+         copy.topic = value
+         return copy
+      })
+   }
 
 
    const generateCategories = (topics) => {
@@ -38,8 +45,11 @@ const CategoriesNav = () => {
             newItem[0] = newItem[0].toUpperCase()
             return newItem.join('')
          }
-         newTopic(topic.slug)
-      return <Link key={index} to={`/articles/${topic.slug}`} >{newTopic(topic.slug)}</Link>
+      return (
+         <Link key={index} to={`/articles/${topic.slug}`} onClick={ () => handleClick(topic.slug) }>
+            {newTopic(topic.slug)}
+         </Link>
+      ); 
       })
    }
 
@@ -54,4 +64,3 @@ const CategoriesNav = () => {
 }
 
 export default CategoriesNav
-
