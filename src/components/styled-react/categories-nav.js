@@ -46,7 +46,7 @@ const CategoriesNav = ( { setQueries } ) => {
             return newItem.join('')
          }
       return (
-         <Link key={index} to={`/articles/${topic.slug}`} onClick={ () => handleClick(topic.slug) }>
+         <Link key={index} to={`/articles/${topic.slug}`} onClick={ () => handleClick(topic.slug) } >
             {newTopic(topic.slug)}
          </Link>
       ); 
@@ -56,7 +56,7 @@ const CategoriesNav = ( { setQueries } ) => {
    return (
       <CategoryDiv>
          <nav>
-            <Link to={'/articles'}>All Articles</Link>
+            <Link to={'/articles'} onClick={ () => handleClick(undefined) } >All Articles</Link>
             {categories && generateCategories(categories)}
          </nav>
       </CategoryDiv>
