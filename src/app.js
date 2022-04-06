@@ -24,7 +24,7 @@ import Articles from './components/pages/articles'
 
 function App() {
 
-   const [ currentTheme, setCurrentTheme ] = useState(theme.dark)
+   const [ currentTheme, setCurrentTheme ] = useState(theme.light)
    return (
       <ThemeProvider theme={currentTheme} >
          <GlobalStyles />
