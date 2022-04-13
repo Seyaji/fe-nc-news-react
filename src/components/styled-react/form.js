@@ -92,9 +92,9 @@ const Form = ({ setIsOpen, setActiveUser, activeUser }) => {
    return (
       <FormBox>
          {!activeUser && <>
-         <Label htmlFor="label">Login for user priviledges</Label>
+         <Label htmlFor="label">Login for user priviledges (jesjelly)</Label>
          <Input id="label" onChange={handleChange} />
-         <Message>Enter your username and click submit (jesjelly)</Message>
+         <Message>Enter your username and click submit </Message>
          <InlineDiv>
             <Button type="submit" onClick={handleClick} value={username}>
                submit
